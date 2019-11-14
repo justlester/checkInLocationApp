@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { LoadingController, Platform } from '@ionic/angular';
+import { Plugins } from '@capacitor/core';
+const { Geolocation } = Plugins;
 
 @Component({
   selector: 'app-home',
@@ -7,6 +10,28 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  currentLocationDetails: any = null;
+  loadingCheckIn: boolean = false;
+
+  constructor(
+    private geolocation: Geolocation,
+    private platform: Platform,
+    public loadingCtrl: LoadingController
+  ) {}
+
+  async checkIn(){
+    try {
+      this.platform.ready().then(async ()=>{
+        this.loadingCheckIn = true;
+        this.currentLocationDetails = await Geolocation.getCurrentPosition();
+        // this.currentLocationDetails = await this.geolocation.getCurrentPosition();
+        console.log(this.currentLocationDetails);
+        this.loadingCheckIn = false;
+      });
+    } catch (error) {
+      console.error(error);
+    }   
+  }
+
 
 }

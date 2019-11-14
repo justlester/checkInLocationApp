@@ -1,14 +1,34 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Check In Location
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+  <ion-card *ngIf="currentLocationDetails">
+    <ion-card-content>
+      Check In Time:&nbsp;{{ currentLocationDetails.timestamp | date:'medium' }}
+      <br/>
+      Coordinates: 
+      <ul>
+        <li>
+          Longitude:&nbsp;{{ currentLocationDetails.coords.longitude}}
+        </li>
+        <li>
+          Latitude:&nbsp;{{ currentLocationDetails.coords.latitude }}
+        </li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+  <ion-button expand="block" (click)="checkIn()" [disabled]="loadingCheckIn">
+    <span *ngIf="!loadingCheckIn">
+        Check In
+    </span>
+    <span *ngIf="loadingCheckIn">
+        <ion-spinner></ion-spinner>
+    </span>
+   
+  </ion-button>
 </ion-content>

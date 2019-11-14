@@ -1,5 +1,8 @@
 {
   "name": "checkInLocationApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
   "type": "angular"
 }
