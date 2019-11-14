@@ -14,7 +14,6 @@ export class HomePage {
   loadingCheckIn: boolean = false;
 
   constructor(
-    private geolocation: Geolocation,
     private platform: Platform,
     public loadingCtrl: LoadingController
   ) {}
