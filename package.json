@@ -22,10 +22,14 @@
     "@capacitor/android": "^1.3.0",
     "@capacitor/core": "1.3.0",
     "@ionic-native/core": "^5.0.0",
+    "@ionic-native/diagnostic": "^5.17.0",
+    "@ionic-native/geolocation": "^5.17.0",
     "@ionic-native/splash-screen": "^5.0.0",
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^4.7.1",
     "cordova-android": "^8.1.0",
+    "cordova-plugin-geolocation": "^4.0.2",
+    "cordova.plugins.diagnostic": "^5.0.1",
     "core-js": "^2.5.4",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
@@ -74,7 +78,13 @@
       "cordova-plugin-ionic-webview": {
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-geolocation": {
+        "GEOLOCATION_USAGE_DESCRIPTION": "We use your location for confirming attendance."
+      },
+      "cordova.plugins.diagnostic": {
+        "ANDROID_SUPPORT_VERSION": "28.+"
+      }
     },
     "platforms": [
       "android"

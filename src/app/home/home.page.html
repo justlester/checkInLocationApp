@@ -29,6 +29,30 @@
     <span *ngIf="loadingCheckIn">
         <ion-spinner></ion-spinner>
     </span>
-   
   </ion-button>
+
+  <ion-button expand="block" (click)="watchLocation()" [color]="isWatchingLoc? 'danger':'primary'">
+    <span *ngIf="!isWatchingLoc">
+      <ion-icon name="eye"></ion-icon>&nbsp;Watch Location
+    </span>
+    <span *ngIf="isWatchingLoc">
+      <ion-icon name="hand"></ion-icon>&nbsp;Stop Watching
+    </span>
+  </ion-button>
+
+  <ion-button expand="block" (click)="clearLocations()" color="secondary" *ngIf="watchedLocations.length != 0">
+    Clear Locations
+  </ion-button>
+
+  <ion-list>
+    <ng-container *ngFor="let loc of watchedLocations">
+      <ion-item>
+        <b>Timestamp:</b>{{loc.timestamp}}<br/>
+        <b>Longitude:</b>&nbsp;{{ loc.coords.longitude}}<br/>
+        <b>Latitude:</b>&nbsp;{{ loc.coords.latitude }}<br/>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+  
+
 </ion-content>
